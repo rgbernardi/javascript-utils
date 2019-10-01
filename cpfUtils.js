@@ -109,7 +109,7 @@ function getCPF(hasMask = true){
 // Author: Regis G Bernardi 
 // E-mail: rgbernardi @ gmail.com
 //////////////////////////////////////////////////////////////////
-function removeMask(idCPF) {
+function unMask(idCPF) {
   var auxCPF = idCPF;
   var unmaskCPF = '';
   var index = 0;
