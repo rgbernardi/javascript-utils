@@ -111,15 +111,15 @@ function getCPF(hasMask = true){
 //////////////////////////////////////////////////////////////////
 function unMask(idCPF) {
   var auxCPF = idCPF;
-  var unmaskCPF = '';
+  var unMaskCPF = '';
   var index = 0;
 
   while(index < auxCPF.length){
     if (!(isNaN(auxCPF[index]))){
-      unmaskCPF = unmaskCPF.concat(auxCPF[index]);
+      unMaskCPF = unMaskCPF.concat(auxCPF[index]);
     }
     index = index + 1;
   }
 
-  return unmaskCPF;
+  return unMaskCPF;
 }
