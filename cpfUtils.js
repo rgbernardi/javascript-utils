@@ -93,3 +93,33 @@ function getCPF(hasMask = true){
 
   return newCPF;
 }
+
+//////////////////////////////////////////////////////////////////
+//================================================================
+// Function to remove mask from a CPF sequence.
+//================================================================
+// CPF is a Brazilian ID.
+//
+// It is made by a sequence of 11 digits. 
+// The last 2 digits are responsible for make it valid or not.
+//
+// This function is responsible for removing the mask from a CPF 
+// sequence informed.
+//
+// Author: Regis G Bernardi 
+// E-mail: rgbernardi @ gmail.com
+//////////////////////////////////////////////////////////////////
+function removeMask(idCPF) {
+  var auxCPF = idCPF;
+  var unmaskCPF = '';
+  var index = 0;
+
+  while(index < auxCPF.length){
+    if (!(isNaN(auxCPF[index]))){
+      unmaskCPF = unmaskCPF.concat(auxCPF[index]);
+    }
+    index = index + 1;
+  }
+
+  return unmaskCPF;
+}
