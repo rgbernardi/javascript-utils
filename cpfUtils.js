@@ -13,11 +13,8 @@
 // Author: Regis G Bernardi 
 // E-mail: rgbernardi @ gmail.com
 //////////////////////////////////////////////////////////////////
-
 function getCPF(hasMask = true){
-
   var newCPF = '';
-  
   var indexA = Math.floor(Math.random() * 10);
   var indexB = Math.floor(Math.random() * 10);
   var indexC = Math.floor(Math.random() * 10);
@@ -64,32 +61,13 @@ function getCPF(hasMask = true){
   }
   
   //Formatting
-  newCPF = newCPF.concat(indexA, 
-                          indexB, 
-                          indexC, 
-                          '.',
-                          indexD, 
-                          indexE, 
-                          indexF, 
-                          '.',
-                          indexG, 
-                          indexH, 
-                          indexI, 
-                          '-',
-                          indexJ, 
-                          indexK);
-
-  //optional - to remove mask
-  if (hasMask != true) {
-    var index = 0;
-
-    while(index < newCPF.length){
-      newCPF = newCPF.replace('.','');
-      index = index++;
-    }
-
-    newCPF = newCPF.replace('-', '');
-  }
+  newCPF = newCPF.concat(indexA, indexB, indexC);
+  if (hasMask) {newCPF = newCPF.concat('.');}
+  newCPF = newCPF.concat(indexD, indexE, indexF);
+  if (hasMask) {newCPF = newCPF.concat('.');}
+  newCPF = newCPF.concat(indexG, indexH, indexI);
+  if (hasMask) {newCPF = newCPF.concat('-');}
+  newCPF = newCPF.concat(indexJ, indexK);
 
   return newCPF;
 }
