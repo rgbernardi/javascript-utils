@@ -81,7 +81,7 @@ function getCPF(hasMask = true){
 // CPF is a Brazilian ID.
 //
 // It is made by a sequence of 11 digits. 
-// The last 2 digits are responsible for make it valid or not.
+// The last 2 dçigits are responsible for make it valid or not.
 //
 // This function is responsible for removing the mask from a CPF 
 // sequence informed.
@@ -124,10 +124,10 @@ function unMask(idCPF) {
 // E-mail: rgbernardi @ gmail.com
 //////////////////////////////////////////////////////////////////
 function isCPF(idCPF){
-  var auxCPF = idCPF;
+  var auxCPF = unMask(idCPF);
   
   try{
-    if (isNaN(auxCPF)) throw "CPF informed is not a number";
+    //if (isNaN(auxCPF)) throw "CPF informed is not a number";
     if (auxCPF.length != 11 ) throw "CPF informed has not 11 digits";
   
   }catch(err){
