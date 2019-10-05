@@ -10,6 +10,8 @@
 // The parameter is regarding the sequence format (mask).
 // If none is informed <TRUE> is considered by default.
 //
+// Returns: String.
+//
 // Author: Regis G Bernardi 
 // E-mail: rgbernardi @ gmail.com
 //////////////////////////////////////////////////////////////////
@@ -84,6 +86,8 @@ function getCPF(hasMask = true){
 // This function is responsible for removing the mask from a CPF 
 // sequence informed.
 //
+// Returns: String.
+//
 // Author: Regis G Bernardi 
 // E-mail: rgbernardi @ gmail.com
 //////////////////////////////////////////////////////////////////
@@ -100,4 +104,65 @@ function unMask(idCPF) {
   }
 
   return unMaskCPF;
+}
+
+//////////////////////////////////////////////////////////////////
+//================================================================
+// Function to check CPF.
+//================================================================
+// CPF is a Brazilian ID.
+//
+// It is made by a sequence of 11 digits. 
+// The last 2 digits are responsible for make it valid or not.
+//
+// This function is responsible for checking if a given sequence is 
+// a valid CPF or not.
+//
+// Returns: Boolean.
+//
+// Author: Regis G Bernardi 
+// E-mail: rgbernardi @ gmail.com
+//////////////////////////////////////////////////////////////////
+function isCPF(idCPF){
+  var auxCPF = idCPF;
+  
+  try{
+    if (isNaN(auxCPF)) throw "CPF informed is not a number";
+    if (auxCPF.length != 11 ) throw "CPF informed has not 11 digits";
+  
+  }catch(err){
+    return "Error: " + err + ".";
+  }
+
+  //Checking digit J  
+  var indexJ = auxCPF.substring(9,10);
+  var iteratorJ = 0;
+  var baseJ = 0;
+  var multJ = 10;
+
+  while (iteratorJ < 9){
+    baseJ = baseJ + (multJ * auxCPF[iteratorJ]);
+      
+    multJ = multJ - 1;
+    iteratorJ = iteratorJ + 1;
+  }
+
+  if (indexJ != (11 - (baseJ % 11))){ return new Boolean(false); }
+  
+  //Checking digit K
+  var indexK = auxCPF.substring(10,11);
+  var iteratorK = 0;
+  var baseK = 0;
+  var multK = 11;
+
+  while (iteratorK < 10){
+    baseK = baseK + (multK * auxCPF[iteratorK]);
+      
+    multK = multK - 1;
+    iteratorK = iteratorK + 1;
+  }
+
+  if (indexK != (11 - (baseK % 11))){ return new Boolean(false); }
+
+  return new Boolean(true);
 }
