@@ -166,3 +166,46 @@ function isCPF(idCPF){
 
   return new Boolean(true);
 }
+
+//////////////////////////////////////////////////////////////////
+//================================================================
+// Function to insert mask to a valid CPF.
+//================================================================
+// CPF is a Brazilian ID.
+//
+// It is made by a sequence of 11 digits. 
+// The last 2 digits are responsible for make it valid or not.
+//
+// This function is responsible for inserting a mask to a CPF.
+//
+// returns: String.
+//
+// Author: Regis G Bernardi 
+// E-mail: rgbernardi @ gmail.com
+//////////////////////////////////////////////////////////////////
+function mask(idCPF){
+  var auxCPF = idCPF;
+
+  try {
+    if (isCPF(auxCPF) != true){ throw "CPF informed is not valid"; }
+  } catch(err) {
+    return "Error: " + err + ".";
+  }
+
+  var maskCPF = '';
+  var index = 0;
+
+  while (index < auxCPF.length){
+    if (index != 0 && index % 3 == 0){
+      if (index != 9){
+        maskCPF = maskCPF.concat(".");
+      } else {
+        maskCPF = maskCPF.concat("-");
+      }
+    }
+    maskCPF = maskCPF.concat(auxCPF[index]);
+    index = index + 1;
+  }
+
+  return maskCPF;
+}
