@@ -209,10 +209,3 @@ function mask(idCPF){
 
   return maskCPF;
 }
-
-//To remove after
-const data = {
-  message: getCPF(),
-}
-
-$('#msg').html(data.message);
